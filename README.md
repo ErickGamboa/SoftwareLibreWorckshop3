@@ -16,3 +16,7 @@
 `clear`
 
 `echo "Hello World!"`
+
+- Para poder probar este script se debe de brindar los permisos al archivo con el siguiente comando `chmod 744`
+
+- Posteriormente se ejecuta el archivo que contiene el script con el siguiente comando `./<nombre del archivo>.sh`
