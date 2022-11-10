@@ -9,4 +9,10 @@
 
 - Se debe proceder a abrir el archivo creado en el auto editor de Visual Studio con el comando `.code`
 
-- 
+- Para poder implemenatr un script de automatización en bash se debe de ingresar lo siguiente al inicio del archivo creado `#!/bin/bash`
+
+- Como prueba vamos a ingresar el siguiente script:
+
+`clear`
+
+`echo "Hello World!"`
