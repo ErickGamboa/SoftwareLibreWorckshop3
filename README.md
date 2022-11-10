@@ -20,3 +20,48 @@
 - Para poder probar este script se debe de brindar los permisos al archivo con el siguiente comando `chmod 744`
 
 - Posteriormente se ejecuta el archivo que contiene el script con el siguiente comando `./<nombre del archivo>.sh`
+
+- Después de probar su funcionamiento insertamos un script que posee la implementación de condicionales:
+
+`#!/bin/bash`
+
+`clear`
+
+`echo "Ingrese su nombre: "`
+
+`read name`
+
+`echo`
+
+`if [ ${#name} -eq 0 ]; then`
+
+`echo "Me hubiera gustado conocerte..."`
+
+`else`
+
+`echo "Hola $name"`
+
+`fi`
+
+- Después se procede a implementar un script que posee la implementación de ciclos:
+
+`while [ true ]; do`
+
+`printf "Ingrese su año de nacimiento (yyyy): "`
+
+`read birthyear`
+
+`if [ -z echo $birthyear | grep -E ^-\?[0-9]*$ ]; then`
+
+`echo "Debe ingresar un número entero de 4 digitos."`
+
+`else`
+
+`break`
+
+`fi`
+
+`done`
+
+
+
