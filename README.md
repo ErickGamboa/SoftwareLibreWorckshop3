@@ -63,5 +63,37 @@
 
 `done`
 
+- Después se procede a modificar el script para poder identificar la generación del usuario de acuerdo a su edad:
+
+`if [ $birthyear -ge 1995 ]; then`
+
+`echo "Veo que eres un nativo digital."`
+
+`elif [ $birthyear -ge 1982 ] && [ $birthyear -lt 1995 ]; then`
+
+`echo "Veo que eres un millennial."`
+
+`elif [ $birthyear -ge 1965 ] && [ $birthyear -lt 1982 ]; then`
+
+`echo "Veo que eres de la maravillosa generación X, apuesto a`
+`que ya tienes hijos."`
+
+`elif [ $birthyear -ge 1945 ] && [ $birthyear -lt 1965 ]; then`
+
+`echo "Veo que eres un Baby Boomer, probablemente ya eres abuelo."`
+
+`fi`
+
+- Con la intención de crear un script de automatización para generar un backup de la base de datos vamos a seguir los iguientes pasos: 
+
+- Creamos un nuevo archivo de formato `.sh` llamado `backup`
+
+- Se inserta el siguiente script:
+
+- Se brindan los permisos al archivo como se realizó anteriormente `700`
+
+- Se ejecuta el archivo para probar su funcionalidad 
+
+- Finalmente en el `crontap -e` que es un archivo de configuración se configura para que el cronjob se ejecute en las horas y mometos deseados
 
 
