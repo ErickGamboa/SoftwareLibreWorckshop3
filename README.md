@@ -12,83 +12,130 @@
 - Para poder implemenatr un script de automatización en bash se debe de ingresar lo siguiente al inicio del archivo creado `#!/bin/bash`
 
 - Como prueba vamos a ingresar el siguiente script:
+```bash
+clear
 
-`clear`
-
-`echo "Hello World!"`
+echo "Hello World!"
+```
 
 - Para poder probar este script se debe de brindar los permisos al archivo con el siguiente comando `chmod 744`
 
 - Posteriormente se ejecuta el archivo que contiene el script con el siguiente comando `./<nombre del archivo>.sh`
 
 - Después de probar su funcionamiento insertamos un script que posee la implementación de condicionales:
+```bash
+#!/bin/bash
 
-`#!/bin/bash`
+clear
 
-`clear`
+echo "Ingrese su nombre: "
 
-`echo "Ingrese su nombre: "`
+read name
 
-`read name`
+echo
 
-`echo`
+if [ ${#name} -eq 0 ]; then
 
-`if [ ${#name} -eq 0 ]; then`
+echo "Me hubiera gustado conocerte..."
 
-`echo "Me hubiera gustado conocerte..."`
+else
 
-`else`
+echo "Hola $name"
 
-`echo "Hola $name"`
-
-`fi`
-
+fi
+```
 - Después se procede a implementar un script que posee la implementación de ciclos:
+```bash
+while [ true ]; do
 
-`while [ true ]; do`
+printf "Ingrese su año de nacimiento (yyyy): "
 
-`printf "Ingrese su año de nacimiento (yyyy): "`
+read birthyear
 
-`read birthyear`
+if [ -z echo $birthyear | grep -E ^-\?[0-9]*$ ]; then
 
-`if [ -z echo $birthyear | grep -E ^-\?[0-9]*$ ]; then`
+echo "Debe ingresar un número entero de 4 digitos."
 
-`echo "Debe ingresar un número entero de 4 digitos."`
+else
 
-`else`
+break
 
-`break`
+fi
 
-`fi`
-
-`done`
-
+done
+```
 - Después se procede a modificar el script para poder identificar la generación del usuario de acuerdo a su edad:
+```bash
+if [ $birthyear -ge 1995 ]; then
 
-`if [ $birthyear -ge 1995 ]; then`
+echo "Veo que eres un nativo digital."
 
-`echo "Veo que eres un nativo digital."`
+elif [ $birthyear -ge 1982 ] && [ $birthyear -lt 1995 ]; then
 
-`elif [ $birthyear -ge 1982 ] && [ $birthyear -lt 1995 ]; then`
+echo "Veo que eres un millennial."
 
-`echo "Veo que eres un millennial."`
+elif [ $birthyear -ge 1965 ] && [ $birthyear -lt 1982 ]; then
 
-`elif [ $birthyear -ge 1965 ] && [ $birthyear -lt 1982 ]; then`
+echo "Veo que eres de la maravillosa generación X, apuesto a
+que ya tienes hijos."
 
-`echo "Veo que eres de la maravillosa generación X, apuesto a`
-`que ya tienes hijos."`
+elif [ $birthyear -ge 1945 ] && [ $birthyear -lt 1965 ]; then
 
-`elif [ $birthyear -ge 1945 ] && [ $birthyear -lt 1965 ]; then`
+echo "Veo que eres un Baby Boomer, probablemente ya eres abuelo."
 
-`echo "Veo que eres un Baby Boomer, probablemente ya eres abuelo."`
-
-`fi`
-
+fi
+```
 - Con la intención de crear un script de automatización para generar un backup de la base de datos vamos a seguir los iguientes pasos: 
 
 - Creamos un nuevo archivo de formato `.sh` llamado `backup`
 
 - Se inserta el siguiente script:
+```bash
+#!/bin/bash
+
+echo "Iniciando respaldo..."
+
+
+site="northwind.isw811.xyz"
+
+directory="/home/vagrant/backups/"$site"/"
+
+datetime=$(date + "%Y%m%d_%H%M%S")
+
+datebase="northwind"
+
+username="user_laravel"
+
+password="ISW811"
+
+
+if [ ! -z "$1" ]; then
+
+    filename="$site"_"$1.sql"
+
+else 
+
+    filename="$site"_"$datetime.sql"
+
+fi
+
+mkdir -p $directory
+
+    mysqldump $datebase > "$directory""$filename" -u $username 
+
+    --password=$password
+
+
+echo "Comprimiendo respaldo..."
+
+cd $directory
+
+tar cvfz "$filename".tar.gz "$filename"
+
+echo "Eliminando el archivo temporal..."
+
+rm $filename
+```
 
 - Se brindan los permisos al archivo como se realizó anteriormente `700`
 
